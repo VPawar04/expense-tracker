@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>Reports — {{month}}/{{year}}</h2>
+
+<h4>Total Monthly Spending: ₹{{ total }}</h4>
+
+<h5 class="mt-4">Category-wise Spending</h5>
+<table class="table table-bordered">
+    <tr>
+        <th>Category</th>
+        <th>Spent</th>
+        <th>Budget</th>
+    </tr>
+
+    {% for cat, spent in breakdown %}
+    <tr>
+        <td>{{ cat }}</td>
+        <td>{{ spent }}</td>
+
+        {% set b = budgets|selectattr("category", "equalto", cat)|list %}
+        <td>
+            {% if b %}
+                {{ b[0].amount }}
+            {% else %}
+                No budget
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>Users</h2>
+
+<form action="/create_user" method="post" class="mb-3">
+    <input type="text" name="name" placeholder="Name" class="form-control mb-2">
+    <input type="email" name="email" placeholder="Email" class="form-control mb-2">
+    <button class="btn btn-primary">Add User</button>
+</form>
+
+<ul class="list-group">
+    {% for u in users %}
+    <li class="list-group-item">
+        {{ u.name }} ({{ u.email }})
+        <a href="/add_expense_form/{{ u.id }}" class="btn btn-sm btn-success float-end ms-2">Add Expense</a>
+        <a href="/budget_form/{{ u.id }}" class="btn btn-sm btn-warning float-end ms-2">Set Budget</a>
+        <a href="{{ url_for('overall_report', user_id=u.id) }}" class="btn btn-sm btn-primary float-end ms-2">View Overall Report</a>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

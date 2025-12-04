@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Overall Expenses & Budget Report</h2>
+
+<h4>Total Spending (All Time): ₹{{ total_spent }}</h4>
+<hr>
+
+<h3>Category-wise Spending (Lifetime)</h3>
+<table class="table table-bordered">
+    <tr>
+        <th>Category</th>
+        <th>Total Spent (₹)</th>
+    </tr>
+    {% for cat, amt in category_spending %}
+    <tr>
+        <td>{{ cat }}</td>
+        <td>{{ amt }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<hr>
+
+<h3>Months Where Budget Was Exceeded</h3>
+{% if exceeded_months %}
+<table class="table table-bordered">
+    <tr>
+        <th>Category</th>
+        <th>Month</th>
+        <th>Year</th>
+        <th>Spent (₹)</th>
+        <th>Budget (₹)</th>
+    </tr>
+    {% for e in exceeded_months %}
+    <tr>
+        <td>{{ e.category }}</td>
+        <td>{{ e.month }}</td>
+        <td>{{ e.year }}</td>
+        <td>{{ e.spent }}</td>
+        <td>{{ e.budget }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>No budget exceeded yet.</p>
+{% endif %}
+
+{% endblock %}

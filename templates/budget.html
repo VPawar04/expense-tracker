@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>Set Budget</h2>
+
+<form method="POST" action="/set_budget">
+    <input type="hidden" name="user_id" value="{{ user_id }}">
+    <input name="category" class="form-control mb-2" placeholder="Category">
+    <input name="amount" class="form-control mb-2" placeholder="Amount" type="number">
+    <input name="month" class="form-control mb-2" placeholder="Month (1-12)" type="number">
+    <input name="year" class="form-control mb-2" placeholder="Year" type="number">
+    <button class="btn btn-warning">Save</button>
+</form>
+
+{% endblock %}
