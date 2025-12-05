@@ -1,5 +1,5 @@
 # 🧾 Expense Tracker Application  
-L7 Informatics Internship — Python Programming Round
+
 
 This is a Flask + SQLite based **Expense Tracking System** that allows users to record daily expenses, categorize them, set monthly budgets, and receive alerts upon reaching or exceeding their budget limits.  
 The system also provides **detailed monthly reports** comparing spending vs. budgets.
